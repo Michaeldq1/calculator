@@ -33,4 +33,4 @@ When the return key is clicked:
 	
 
 When the clear key is clicked:
-	Clears the input string.
+	Clear the input string.
