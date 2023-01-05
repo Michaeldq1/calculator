@@ -1,0 +1,71 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    background-color: #e8fccf;
+}
+
+.container {
+    height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 8px;
+}
+
+#calculator-display {
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    border: 8px solid #214e34;
+    background-color: #e8fccf;
+    overflow: hidden; 
+}
+
+#calculator-keys {
+    height: 400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: #214e34;
+    border-radius: 0 0 8px 8px;
+}
+
+.number-key, .operator-key, #delete-key, #return-key {
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 250ms;
+}
+
+.number-key {
+    background-color: #e8fccf;
+}
+
+.operator-key {
+    background-color: #00a651;
+}
+
+#delete-key {
+    background-color: #C8472B;;
+}
+
+#return-key {
+    flex: 3;
+    background-color: #bc6c25;
+}
+
+.number-key:hover, .operator-key:hover, #delete-key:hover, #return-key:hover {
+    opacity: 0.3;
+}

@@ -1,0 +1,36 @@
+Variable declaration:
+
+Assign number keys to a variable.
+Assign operator keys to a variable.
+Assign return key to a variable.
+Assign delete key to a variable.
+Assign clear key to a variable.
+Create a display flag to determine if the display (input string) is an input or an output.
+
+pseudocode->
+
+When a number key is clicked:
+	If an input is displayed, append the number to the input string. 
+	If an output is displayed and the input string ends with an operator, append the number to the input string.
+	If an output is displayed, clear the input string and then put the number in the input string.
+	
+When an operator key is clicked:
+	If the display is empty (no input or output), do nothing.
+	If the input string ends with an operator, replace the operator with the selected operator.
+	If the input string ends with a number, append the operator to the input string.
+
+When the delete key is clicked:
+	If the display is empty (no input or output), do nothing.
+	If an input is displayed, delete the last character in the input string.
+	If an output is displayed, clear the entire input string. 
+	If an output is displayed and the input string ends with an operator, delete the last character in the input string.
+
+When the return key is clicked:
+	Split the input string into two strings; an operator string and a number string. 
+	Loop through the operator and number strings to execute operations; 
+		starting with multiplication, then division, then addition, then  subtraction.
+	Once all operations are complete, display an output string and switch the dispay flag.
+	
+
+When the clear key is clicked:
+	Clears the input string.
