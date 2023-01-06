@@ -1,3 +1,13 @@
+"use strict";
+
+const display = document.getElementById('calculator-display');
+const numberKeys = document.querySelectorAll('.number-key');
+const operatorKeys = document.querySelectorAll('.operator-key');
+const returnKey = document.getElementById('return-key');
+const clearKey = document.getElementById('clear-key');
+const deleteKey = document.getElementById('delete-key');
+let isOutputDisplayed = false;
+
 function insertNumber(event) {
     let inputString = display.innerHTML;
         let lastChar = inputString[inputString.length - 1];
