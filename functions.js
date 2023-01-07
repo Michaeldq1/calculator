@@ -9,11 +9,11 @@ const deleteKey = document.getElementById('delete-key');
 let isOutputDisplayed = false;
 
 function insertNumber(event) {
-    let inputString = display.innerHTML;
+    let inputString = display.textContent;
         let lastChar = inputString[inputString.length - 1];
 
         if (isOutputDisplayed === false) {
-            display.innerHTML += event.target.innerHTML;
+            display.textContent += event.target.textContent;
         } else if (
             isOutputDisplayed === true && lastChar === '-' || 
             lastChar === '+' || 
@@ -21,34 +21,34 @@ function insertNumber(event) {
             lastChar === '×') {
 
             isOutputDisplayed = false;
-            display.innerHTML += event.target.innerHTML;
+            display.textContent += event.target.textContent;
         } else {
             isOutputDisplayed = false;
-            display.innerHTML = '';
-            display.innerHTML += event.target.innerHTML;
+            display.textContent = '';
+            display.textContent += event.target.textContent;
         }
 }
 
 function insertOperator(event) {
-    let inputString = display.innerHTML;
+    let inputString = display.textContent;
         let lastChar = inputString[inputString.length - 1];
 
         if (lastChar === '+' || lastChar === '-' || 
             lastChar === '×' || lastChar === '÷') {
 
-            display.innerHTML = 
+            display.textContent = 
             inputString.substring(0, inputString.length - 1) + 
-            event.target.innerHTML;
+            event.target.textContent;
 
         } else if (inputString.length == 0) {
             console.log('Enter a number first!')
         } else {
-            display.innerHTML += event.target.innerHTML;
+            display.textContent += event.target.textContent;
         }
 }
 
 function runOperations() {
-    let inputString = display.innerHTML;
+    let inputString = display.textContent;
     let numberString = inputString.split(/\+|\-|\×|\÷/g);
     let operatorString = inputString.replace(/[0-9]|\./g, '').split('');
 
@@ -123,24 +123,24 @@ function runOperations() {
     // runOperation('+');
     // runOperation('-');
 
-    display.innerHTML = numberString[0];
+    display.textContent = numberString[0];
 
     isOutputDisplayed = true;
 }
 
 function removeLastCharacter() {
-    let inputString = display.innerHTML;
+    let inputString = display.textContent;
     let inputArray = inputString.split('');
 
     if (isOutputDisplayed === true) {
-        display.innerHTML = '';
+        display.textContent = '';
     } else {
         inputArray.pop();
         inputString = inputArray.join('');
-        display.innerHTML = inputString;
+        display.textContent = inputString;
     }
 }
 
 function clearString() {
-    display.innerHTML = '';
+    display.textContent = '';
 }
