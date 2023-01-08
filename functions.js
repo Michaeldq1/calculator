@@ -10,41 +10,41 @@ let isOutputDisplayed = false;
 
 function insertNumber(event) {
     let inputString = display.textContent;
-        let lastChar = inputString[inputString.length - 1];
+    let lastChar = inputString[inputString.length - 1];
 
-        if (isOutputDisplayed === false) {
-            display.textContent += event.target.textContent;
-        } else if (
-            isOutputDisplayed === true && lastChar === '-' || 
-            lastChar === '+' || 
-            lastChar === '÷' || 
-            lastChar === '×') {
+    if (isOutputDisplayed === false) {
+        display.textContent += event.target.textContent;
+    } else if (
+        isOutputDisplayed === true && lastChar === '-' || 
+        lastChar === '+' || 
+        lastChar === '÷' || 
+        lastChar === '×') {
 
-            isOutputDisplayed = false;
-            display.textContent += event.target.textContent;
-        } else {
-            isOutputDisplayed = false;
-            display.textContent = '';
-            display.textContent += event.target.textContent;
-        }
+        isOutputDisplayed = false;
+        display.textContent += event.target.textContent;
+    } else {
+        isOutputDisplayed = false;
+        display.textContent = '';
+        display.textContent += event.target.textContent;
+    }
 }
 
 function insertOperator(event) {
-        let inputString = display.textContent;
-        let lastChar = inputString[inputString.length - 1];
+    let inputString = display.textContent;
+    let lastChar = inputString[inputString.length - 1];
 
-        if (lastChar === '+' || lastChar === '-' || 
-            lastChar === '×' || lastChar === '÷') {
+    if (lastChar === '+' || lastChar === '-' || 
+        lastChar === '×' || lastChar === '÷') {
 
-            display.textContent = 
-            inputString.substring(0, inputString.length - 1) + 
-            event.target.textContent;
+        display.textContent = 
+        inputString.substring(0, inputString.length - 1) + 
+        event.target.textContent;
 
-        } else if (inputString.length == 0) {
-            console.log('Enter a number first!')
-        } else {
-            display.textContent += event.target.textContent;
-        }
+    } else if (inputString.length == 0) {
+        console.log('Enter a number first!')
+    } else {
+        display.textContent += event.target.textContent;
+    }
 }
 
 function runOperations() {
@@ -83,14 +83,12 @@ function runOperations() {
 
 function removeLastCharacter() {
     let inputString = display.textContent;
-    let inputArray = inputString.split('');
+    let newString = inputString.substring(0, inputString.length - 1);
 
     if (isOutputDisplayed === true) {
         display.textContent = '';
     } else {
-        inputArray.pop();
-        inputString = inputArray.join('');
-        display.textContent = inputString;
+        display.textContent = newString;
     }
 }
 
