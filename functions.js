@@ -30,7 +30,7 @@ function insertNumber(event) {
 }
 
 function insertOperator(event) {
-    let inputString = display.textContent;
+        let inputString = display.textContent;
         let lastChar = inputString[inputString.length - 1];
 
         if (lastChar === '+' || lastChar === '-' || 
@@ -52,76 +52,29 @@ function runOperations() {
     let numberString = inputString.split(/\+|\-|\×|\÷/g);
     let operatorString = inputString.replace(/[0-9]|\./g, '').split('');
 
-    let multiply = operatorString.indexOf('×');
-    while (multiply != -1) {
-        numberString.splice(multiply, 2, 
-            numberString[multiply] * numberString[multiply + 1]);
-        operatorString.splice(multiply, 1);
-        multiply = operatorString.indexOf('×');
-    }
+    function runOperation(operator) {
+        const operations = {
+          '×': (num1, num2) => num1 * num2,
+          '÷': (num1, num2) => num1 / num2,
+          '+': (num1, num2) => parseFloat(num1) + parseFloat(num2),
+          '-': (num1, num2) => num1 - num2,
+        };
 
-    let divide = operatorString.indexOf('÷');
-    while (divide != - 1) {
-        numberString.splice(divide, 2, 
-            numberString[divide] / numberString[divide + 1]);
-        operatorString.splice(divide, 1);
-        divide = operatorString.indexOf('÷');
-    }
+        const operation = operations[operator];
+      
+        let operatorIndex = operatorString.indexOf(operator);
+        while (operatorIndex !== -1) {
+          numberString.splice(operatorIndex, 2,
+          operation(numberString[operatorIndex], numberString[operatorIndex + 1]));
+          operatorString.splice(operatorIndex, 1);
+          operatorIndex = operatorString.indexOf(operator);
+        }
+      }
 
-    let subtract = operatorString.indexOf('-');
-    while (subtract != -1) {
-        numberString.splice(subtract, 2,
-            numberString[subtract] - numberString[subtract + 1]);
-        operatorString.splice(subtract, 1);
-        subtract = operatorString.indexOf('-');
-    }
-
-    let add = operatorString.indexOf('+');
-    while (add != -1) {
-        numberString.splice(add, 2, 
-            parseFloat(numberString[add]) + parseFloat(numberString[add + 1]));
-        operatorString.splice(add, 1);
-        add = operatorString.indexOf('+');
-    }
-
-    // function runOperation(operator) {
-    //     let operatorIndex = operatorString.indexOf(operator);
-    //     let operatorExecution;
-
-    //     switch (operator) {
-    //         case '×':
-    //             operatorExecution = 
-    //                 numberString[operatorIndex] * 
-    //                 numberString[operatorIndex + 1];
-    //             break;
-    //         case '÷':
-    //             operatorExecution = 
-    //                 numberString[operatorIndex] /
-    //                 numberString[operatorIndex + 1];
-    //             break;
-    //         case '+':
-    //             operatorExecution = 
-    //                 parseFloat(numberString[operatorIndex]) + 
-    //                 parseFloat(numberString[operatorIndex + 1]);
-    //             break;
-    //         case '-':
-    //             operatorExecution = 
-    //                 numberString[operatorIndex] - 
-    //                 numberString[operatorIndex + 1];
-    //             break;
-    //     }
-
-    //     while (operatorIndex != -1) {
-    //         numberString.splice(operatorIndex, 2, operatorExecution);
-    //         operatorString.splice(operatorIndex, 1);
-    //         operatorIndex = operatorString.indexOf(operator);
-    //     }
-    // }
-
-    // runOperation('×');
-    // runOperation('÷');
-    // runOperation('+');
-    // runOperation('-');
+    runOperation('÷');
+    runOperation('×');
+    runOperation('+');
+    runOperation('-');
 
     display.textContent = numberString[0];
 
