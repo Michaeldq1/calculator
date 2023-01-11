@@ -49,6 +49,13 @@ function insertOperator(event) {
 
 function runOperations() {
     let inputString = display.textContent;
+    let lastChar = inputString[inputString.length - 1];
+
+    if (lastChar === '+' || lastChar === '-' || 
+        lastChar === '×' || lastChar === '÷') {
+            inputString = inputString.substring(0, inputString.length - 1);
+    }
+
     let numberString = inputString.split(/\+|\-|\×|\÷/g);
     let operatorString = inputString.replace(/[0-9]|\./g, '').split('');
 
@@ -77,7 +84,6 @@ function runOperations() {
     runOperation('-');
 
     display.textContent = numberString[0];
-
     isOutputDisplayed = true;
 }
 
