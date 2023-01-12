@@ -1,4 +1,10 @@
 "use strict";
+const operations = {
+    '×': (num1, num2) => num1 * num2,
+    '÷': (num1, num2) => num1 / num2,
+    '+': (num1, num2) => parseFloat(num1) + parseFloat(num2),
+    '-': (num1, num2) => num1 - num2,
+  };
 
 const display = document.getElementById('calculator-display');
 const numberKeys = document.querySelectorAll('.number-key');
@@ -60,12 +66,6 @@ function runOperations() {
     let operatorString = inputString.replace(/[0-9]|\./g, '').split('');
 
     function runOperation(operator) {
-        const operations = {
-          '×': (num1, num2) => num1 * num2,
-          '÷': (num1, num2) => num1 / num2,
-          '+': (num1, num2) => parseFloat(num1) + parseFloat(num2),
-          '-': (num1, num2) => num1 - num2,
-        };
 
         const operation = operations[operator];
       
