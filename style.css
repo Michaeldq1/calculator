@@ -1,10 +1,14 @@
+* {
+    caret-color: transparent;
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: xx-large;
-    background-color: #e8fccf;
+    background-color: white;
 }
 
 .container {
